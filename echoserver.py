@@ -7,7 +7,7 @@ class EchoHandler(asyncore.dispatcher_with_send)
         data = self.recv(1024)
         if data:
             if data == 'close':
-                break
+                self.close()
             self.send(data)
 
 class EchoServer(asyncore.dispatcher):
@@ -27,4 +27,4 @@ class EchoServer(asyncore.dispatcher):
             handler = EchoHandler(sock)
 
 server = EchoServer('0.0.0.0', 2222)
-asyncrone.loop
+asyncore.loop()
